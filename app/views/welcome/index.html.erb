@@ -1,0 +1,9 @@
+Welcome! FOO!
+
+<input type="text" name="some_name" value="" placeholder="Band Name">
+
+<% @artists.each do |artist| %>
+  <% artist.images.each do |image| %>
+    <img src="<%= image['url'] %>" alt="" />
+  <% end %>
+<% end %>
