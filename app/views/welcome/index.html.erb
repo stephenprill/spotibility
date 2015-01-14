@@ -6,6 +6,8 @@ Welcome! FOO!
   <%= submit_tag "Search" %>
 <% end %>
 
+<% if @artists %>
+
 <%= @artists.map { |artist| artist.name }.join(', ') %>
 
 <% @artists.each do |artist| %>
@@ -13,4 +15,5 @@ Welcome! FOO!
   <% artist.images.each do |image| %>
     <img src="<%= image['url'] %>" alt="" />
   <% end %>
+<% end %>
 <% end %>
