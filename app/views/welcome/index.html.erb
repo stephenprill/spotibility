@@ -1,8 +1,15 @@
 Welcome! FOO!
 
-<input type="text" name="some_name" value="" placeholder="Band Name">
+
+<%= form_tag root_path, method: "get" do %>
+  <%= text_field_tag :q %>
+  <%= submit_tag "Search" %>
+<% end %>
+
+<%= @artists.map { |artist| artist.name }.join(', ') %>
 
 <% @artists.each do |artist| %>
+  <%= artist.genres %>
   <% artist.images.each do |image| %>
     <img src="<%= image['url'] %>" alt="" />
   <% end %>
