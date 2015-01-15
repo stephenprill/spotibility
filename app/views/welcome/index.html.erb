@@ -1,19 +1,19 @@
-Welcome! FOO!
+<h2>Welcome</h2>
 
 
-<%= form_tag root_path, method: "get" do %>
-  <%= text_field_tag :q %>
-  <%= submit_tag "Search" %>
-<% end %>
+    <%= form_tag root_path, method: "get" do %>
+      <%= text_field_tag :q %>
+      <%= submit_tag "Search" %>
+    <% end %>
 
-<% if @artists %>
+    <% if @artists %>
 
-<%= @artists.map { |artist| artist.name }.join(', ') %>
+    <%= @artists.map { |artist| artist.name }.join(', ') %>
 
-<% @artists.each do |artist| %>
-  <%= artist.genres %>
-  <% artist.images.each do |image| %>
-    <img src="<%= image['url'] %>" alt="" />
+    <% @artists.each do |artist| %>
+      <%= artist.genres %>
+      <% artist.images.each do |image| %>
+      <img src="<%= image['url'] %>" alt="" />
+    <% end %>
   <% end %>
-<% end %>
 <% end %>
