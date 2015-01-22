@@ -19,6 +19,8 @@ gem 'coffee-rails', '~> 4.0.0'
 # gem 'therubyracer',  platforms: :ruby
 
 gem 'rspotify'
+gem 'pry', '~> 0.10.1'
+gem 'omniauth', '~> 1.2.2'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
