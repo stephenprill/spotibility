@@ -5,6 +5,7 @@ group :development, :test do
   gem 'dotenv-rails'
   gem 'capybara'
   gem 'launchy'
+  gem 'better_errors', '~> 2.1.1'
 end
 
 group :production do
