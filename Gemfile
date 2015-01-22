@@ -1,5 +1,11 @@
 source 'https://rubygems.org'
 
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'dotenv-rails'
+  gem 'capybara'
+  gem 'launchy'
+end
 
 group :production do
   gem "rails_12factor"
@@ -18,10 +24,23 @@ gem 'coffee-rails', '~> 4.0.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
 
+# Installed For Trial
+
 gem 'rspotify'
+
 gem 'pry', '~> 0.10.1'
+
 gem 'omniauth', '~> 1.2.2'
+
 gem 'omniauth-spotify', '~> 0.0.5'
+
+gem 'faker'
+
+gem "pg"
+
+gem 'faraday'
+
+gem 'bootstrap-sass', '~> 3.2.0'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

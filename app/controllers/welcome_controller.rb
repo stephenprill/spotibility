@@ -3,18 +3,18 @@ class WelcomeController < ApplicationController
 
   def index
     if params[:q]
-    @artists = RSpotify::Artist.search(params[:q])
-  else
-
-    @user = RSpotify::User.find('stephenprill').new
-    binding.pry
-    render :index
+      @artists = RSpotify::Artist.search(params[:q])
+    else
+      @user = RSpotify::User.find('stephnprill')
+      # took off .new to end of like 8 
+      # binding.pry
+      render :index
+    end
   end
-end
 
-  # def search
-  #   @artists = RSpotify::Artist.search(params[:q])
-  # end
+  def search
+    @artists = RSpotify::Artist.search(params[:q])
+  end
 
 
 end
