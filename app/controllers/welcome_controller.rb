@@ -5,8 +5,8 @@ class WelcomeController < ApplicationController
     if params[:q]
       @artists = RSpotify::Artist.search(params[:q])
     else
-      @user = RSpotify::User.find('stephnprill')
-      # took off .new to end of like 8 
+      @user = RSpotify::User.find('stephenprill')
+      # took off .new to end of like 8
       # binding.pry
       render :index
     end

@@ -9,11 +9,23 @@
     <% if @artists %>
 
     <%= @artists.map { |artist| artist.name }.join(', ') %>
-
     <% @artists.each do |artist| %>
+    <h2>Artist First Album</h2>
+      <%= artist.album.first %>
+    <h2>Artist Name</h2>
+      <%= artist.name %>
+    <h2>Populairty #wrong</h2>
+     <%= artist.popularity %>
+    <h2>Genres</h2>
       <%= artist.genres %>
+    <h2>Images</h2>
       <% artist.images.each do |image| %>
       <img src="<%= image['url'] %>" alt="" />
+    <h2>Top Tracks</h2>
+      <%= artist.top_tracks(:US) %>
+    <h2>Albums</h2>
+     <%= artist.albums %>
+
     <% end %>
   <% end %>
 <% end %>
