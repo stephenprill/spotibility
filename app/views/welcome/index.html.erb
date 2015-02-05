@@ -1,6 +1,8 @@
 <h2>Welcome</h2>
   <%= link_to 'Sign in with Spotify', '/auth/spotify' %>
-  <%= @user %>
+  <!-- <%= link_to 'users', 'users'%> -->
+  <%= @user1.playlists %><br>XXX<hr>
+  <%= @user2.playlists %>
     <%= form_tag root_path, method: "get" do %>
       <%= text_field_tag :q %>
       <%= submit_tag "Search Artist" %>
@@ -21,9 +23,18 @@
         <% artist.images.each do |image| %>
         <img src="<%= image['url'] %>" alt="" />
       <h2>Artist Top Tracks</h2>
-        <%= artist.top_tracks(:US) %>
+        <% artist.top_tracks(:US).each do |foo| %>
+        <div>
+          <img src="<%= foo.album.images[2]["url"]%>" />
+          <%= link_to foo.name, "https://open.spotify.com/track/#{foo.uri.slice(14..foo.uri.length)}" %>
+          <% end %>
+      </div>
       <h2>Artist Albums</h2>
-        <%= artist.albums %>
+        <%= artist.albums.each do |album| %>
+      <p>
+        <%= album %>
+      </p><br>
+      <% end %>
     <% end %>
   <% end %>
 <% end %>
@@ -39,7 +50,7 @@
     <%= @albums.map { |album| album.name }.join(', ') %>
     <% @albums.each do |album| %>
 
-    <h2>Artist Images</h2>
+    <h2>Album Images</h2>
     <% album.images.each do |image| %>
     <img src="<%= image['url'] %>" alt="" />
 
