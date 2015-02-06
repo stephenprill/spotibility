@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     puts spotify_user.email   #=> "example@email.com"
 
     # Create playlist in user's Spotify account
-    spotify_user.create_playlist!('XXX-winning-XXX')
+    spotify_user.create_playlist!('LLL-winning-LLL')
 
     @user = spotify_user
     render :index
