@@ -30,13 +30,22 @@
 
 
 
+          <h3>Playlist External Urls</h3>
+            <p><% playlist.external_urls.each do |external| %></p>
+            <%= link_to playlist.name, external[1] %>
+
+
+            <% end %>
+
+
+
           <p><% playlist.images.each do |image| %></p>
           <img src="<%= image["url"]%>" alt="" />
           <%= link_to playlist.name %>
 
           <% end %>
 
-        
+
 
 
           <ul>
