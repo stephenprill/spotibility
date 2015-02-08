@@ -1,12 +1,26 @@
 <h2>Welcome</h2>
   <%= link_to 'Sign in with Spotify', '/auth/spotify' %>
 
+
+<%= @user1.playlists %>
+
       <hr>
       <hr>
       <h1>User 1</h1>
       <div class="user1">
         <% @user1.playlists.each do |playlist| %>
           <p><%= playlist.name %></p>
+          <p><%= playlist.total %></p>
+          <p><%= playlist.public %></p>
+          <%= playlist.images %>
+
+          <p><% playlist.images.each do |image| %></p>
+          <img src="<%= image["url"]%>" alt="" />
+          <%= link_to playlist.name %>
+
+          <% end %>
+
+
           <ul>
             <p><li><%= playlist.tracks.map(&:name)%></li></p>
           </ul>
