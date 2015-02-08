@@ -9,10 +9,26 @@
       <h1>User 1</h1>
       <div class="user1">
         <% @user1.playlists.each do |playlist| %>
+        <h3>Playlist Name</h3>
           <p><%= playlist.name %></p>
+        <h3>Playlist Total</h3>
           <p><%= playlist.total %></p>
+        <h3>Playlist Public</h3>
           <p><%= playlist.public %></p>
-          <%= playlist.images %>
+        <h3>Playlist Images </h3>
+          <p><%= playlist.images %></p>
+        <h3>Playlist Owner </h3>
+          <p><%= playlist.owner %></p>
+        <h3>Playlist Href</h3>
+          <p><%= link_to playlist.href %></p>
+        <h3>Playlist URI</h3>
+          <p><%= playlist.uri %></p>
+        <h3>Playlist External Urls</h3>
+          <p><%= playlist.external_urls %></p>
+        <h3>Playlist ID</h3>
+          <p><%= playlist.id %></p>
+
+
 
           <p><% playlist.images.each do |image| %></p>
           <img src="<%= image["url"]%>" alt="" />
@@ -20,9 +36,13 @@
 
           <% end %>
 
+        
+
 
           <ul>
-            <p><li><%= playlist.tracks.map(&:name)%></li></p>
+            <p><li><% playlist.tracks.map(&:name).each do |tracks|%></li></p>
+            <%= link_to tracks %>
+            <% end %>
           </ul>
         <br><br>
         <% end %>
