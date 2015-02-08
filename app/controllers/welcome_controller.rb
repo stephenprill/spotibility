@@ -5,8 +5,8 @@ class WelcomeController < ApplicationController
     if params[:q]
       @artists = RSpotify::Artist.search(params[:q])
     end
-      @user1 = RSpotify::User.find('stephenprill')
-      @user2 = RSpotify::User.find('topitracks')
+      @user1 = RSpotify::User.find('topitracks')
+      @user2 = RSpotify::User.find('stephenprill')
       render :index
   end
 

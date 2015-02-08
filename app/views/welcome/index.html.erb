@@ -1,96 +1,71 @@
 <h2>Welcome</h2>
   <%= link_to 'Sign in with Spotify', '/auth/spotify' %>
-  <!-- <%= link_to 'users', 'users'%> -->
-  <!-- <% @user1.playlists.each do |user1| %>
-  <%= @user1.playlists %> <br><br>
-  <% end %>
-  <%= @user2.playlists %> -->
 
-  <!-- <%= @user1.playlists %> -->
+      <hr>
+      <hr>
+      <h1>User 1</h1>
+      <div class="user1">
+        <% @user1.playlists.each do |playlist| %>
+          <p><%= playlist.name %></p>
+          <ul>
+            <p><li><%= playlist.tracks.map(&:name)%></li></p>
+          </ul>
+        <br><br>
+        <% end %>
+      </div>
 
+      <hr>
+      <hr>
 
-
-    <hr>
-    <hr>
-    <h1>User 1</h1>
-    <div class="user1">
-      <% @user1.playlists.each do |playlist| %>
+      <hr>
+      <h1>User 2</h1>
+      <div class="user2">
+        <% @user2.playlists.each do |playlist| %>
         <p><%= playlist.name %></p>
         <ul>
-          <p><li><%= playlist.tracks.map(&:name)%></li></p>
+          <p><li><%= playlist.tracks.map(&:name) %></li></p><br><br>
         </ul>
-      <br><br>
-      <% end %>
-    </div>
-    <hr>
-    <hr>
-
-    <hr>
-    <h1>User 1</h1>
-    <div class="user2">
-      <% @user2.playlists.each do |playlist| %>
-        <p><%= playlist.tracks.map(&:name) %></p><br><br>
-        <p><%= playlist.name %></p>
-
-      <% end %>
-    </div>
-    <hr>
-    <hr>
-
-    <%= form_tag root_path, method: "get" do %>
-      <%= text_field_tag :q %>
-      <%= submit_tag "Search Artist" %>
-    <% end %>
-
-    <% if @artists %>
-
-      <%= @artists.map { |artist| artist.name }.join(', ') %>
-      <% @artists.each do |artist| %>
-
-      <h2>Artist Name</h2>
-        <%= artist.name %>
-      <h2>Artist Populairty #wrong?</h2>
-        <%= artist.popularity %>
-      <h2>Artist Genres</h2>
-        <%= artist.genres %>
-      <h2>Artist Images</h2>
-        <% artist.images.each do |image| %>
-        <img src="<%= image['url'] %>" alt="" />
-      <h2>Artist Top Tracks</h2>
-        <% artist.top_tracks(:US).each do |toptracks| %>
-        <div>
-          <img src="<%= toptracks.album.images[2]["url"]%>" />
-          <%= link_to toptracks.name, "https://open.spotify.com/track/#{toptracks.uri.slice(14..toptracks.uri.length)}" %>
-          <% end %>
+        <% end %>
       </div>
-      <h2>Artist Albums</h2>
-        <%= artist.albums.each do |album| %>
-        <div>
-          <img src="<%= album.images[2]["url"]%>" />
-          <p>
-            <%= link_to album.name %>
-          </p>
+      <hr>
+      <hr>
+
+
+      <%= form_tag root_path, method: "get" do %>
+        <%= text_field_tag :q %>
+        <%= submit_tag "Search Artist" %>
+      <% end %>
+
+      <% if @artists %>
+
+        <%= @artists.map { |artist| artist.name }.join(', ') %>
+        <% @artists.each do |artist| %>
+
+        <h2>Artist Name</h2>
+          <%= artist.name %>
+        <h2>Artist Populairty #wrong?</h2>
+          <%= artist.popularity %>
+        <h2>Artist Genres</h2>
+          <%= artist.genres %>
+        <h2>Artist Images</h2>
+          <% artist.images.each do |image| %>
+          <img src="<%= image['url'] %>" alt="" />
+        <h2>Artist Top Tracks</h2>
+          <% artist.top_tracks(:US).each do |toptracks| %>
+          <div>
+            <img src="<%= toptracks.album.images[2]["url"]%>" />
+            <%= link_to toptracks.name, "https://open.spotify.com/track/#{toptracks.uri.slice(14..toptracks.uri.length)}" %>
+            <% end %>
         </div>
+        <h2>Artist Albums</h2>
+          <%= artist.albums.each do |album| %>
+          <div>
+            <img src="<%= album.images[2]["url"]%>" />
+            <p>
+              <%= link_to album.name %>
+            </p>
+          </div>
+        <% end %>
       <% end %>
     <% end %>
   <% end %>
-<% end %>
-
-    <!-- <%= @user %>
-      <%= form_tag root_path, method: "get" do %>
-      <%= text_field_tag :q %>
-      <%= submit_tag "Search Albums" %>
-    <% end %>
-
-    <% if @albums %>
-
-    <%= @albums.map { |album| album.name }.join(', ') %>
-    <% @albums.each do |album| %>
-
-    <h2>Album Images</h2>
-    <% album.images.each do |image| %>
-    <img src="<%= image['url'] %>" alt="" />
-
-    <% end %>
-    <% end %>
-    <% end %> -->
