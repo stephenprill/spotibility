@@ -23,6 +23,7 @@
   @tracks_cache=nil,
   @tracks_added_at=nil,
   @tracks_added_by=nil,
+  which do you use for security - href gives you 401
   @external_urls={"spotify"=>"http://open.spotify.com/user/stephenprill/playlist/08OFtWCARfXIjyf1E37eFO"},
   @href="https://api.spotify.com/v1/users/stephenprill/playlists/08OFtWCARfXIjyf1E37eFO",
   @id="08OFtWCARfXIjyf1E37eFO",

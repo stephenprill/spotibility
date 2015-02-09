@@ -9,6 +9,11 @@
       <h1>User 1</h1>
       <div class="user1">
         <% @user1.playlists.each do |playlist| %>
+
+        <h3>Playlist External Urls</h3>
+          <p><% playlist.external_urls.each do |external| %></p>
+          <%= link_to playlist.name, external[1] %>
+          <% end %>
         <h3>Playlist Name</h3>
           <p><%= playlist.name %></p>
         <h3>Playlist Total</h3>
@@ -30,17 +35,12 @@
 
 
 
-          <h3>Playlist External Urls</h3>
-            <p><% playlist.external_urls.each do |external| %></p>
-            <%= link_to playlist.name, external[1] %>
 
-
-            <% end %>
 
 
 
           <p><% playlist.images.each do |image| %></p>
-          <img src="<%= image["url"]%>" alt="" />
+          <img src="<%= image['url']%>" alt="" />
           <%= link_to playlist.name %>
 
           <% end %>
