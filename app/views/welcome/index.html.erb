@@ -22,7 +22,7 @@
           <p><%= playlist.public %></p>
         <h3>Playlist Images </h3>
           <p><%= playlist.images %></p>
-        <h3>Playlist Owner </h3>
+        <h3>Playlist Owner</h3>
           <p><%= playlist.owner %></p>
         <h3>Playlist Href</h3>
           <p><%= link_to playlist.href %></p>
@@ -39,18 +39,17 @@
 
 
 
-          <p><% playlist.images.each do |image| %></p>
-          <img src="<%= image['url']%>" alt="" />
+          <img src="<%= playlist.images[2].to_h["url"] %>" alt="" />
           <%= link_to playlist.name %>
 
-          <% end %>
 
 
 
 
           <ul>
-            <p><li><% playlist.tracks.map(&:name).each do |tracks|%></li></p>
-            <%= link_to tracks %>
+            <p><li><% playlist.tracks.each do |track|%></li></p>
+
+            <a href="<%= track.external_urls["spotify"] %>"><%= track.name %></a>
             <% end %>
           </ul>
         <br><br>
