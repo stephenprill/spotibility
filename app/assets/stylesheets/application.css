@@ -9,3 +9,25 @@ html {
 .user2 {
   background: gray;
 }
+
+.container{
+  width: 98%;
+  background: red;
+}
+
+.one{
+  margin: 0 -4px 0 0px;
+  width: 47%;
+/*   height: 500px; */
+  background: yellow;
+  display: inline-block;
+}
+
+.two{
+  margin: 0 -4px 0 0px;
+  width: 47%;
+/*   height: 500px; */
+  background: green;
+  display: inline-block;
+
+}

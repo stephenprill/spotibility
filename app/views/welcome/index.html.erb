@@ -1,14 +1,25 @@
+
 <h2>Welcome</h2>
   <%= link_to 'Sign in with Spotify', '/auth/spotify' %>
 
 
-<%= @user1.playlists %>
 
+
+  <iframe src="https://embed.spotify.com/?uri=http://open.spotify.com/user/stephenprill/playlist/0XSXEv7BpxQCS6UC02qciM" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
+    <br><br><hr>
+  <iframe src="https://embed.spotify.com/?uri=http://open.spotify.com/user/stephenprill/playlist/0XSXEv7BpxQCS6UC02qciM" width="300" height="80" frameborder="0" allowtransparency="true"></iframe>
+    <hr><br>
+
+<div class="container">
+  <div class="one">
       <hr>
       <hr>
+
       <h1>User 1</h1>
       <div class="user1">
         <% @user1.playlists.each do |playlist| %>
+
+
 
         <h3>Playlist External Urls</h3>
           <p><% playlist.external_urls.each do |external| %></p>
@@ -33,45 +44,35 @@
         <h3>Playlist ID</h3>
           <p><%= playlist.id %></p>
 
-
-
-
-
-
-
           <img src="<%= playlist.images[2].to_h["url"] %>" alt="" />
           <%= link_to playlist.name %>
-
-
-
-
 
           <ul>
             <p><li><% playlist.tracks.each do |track|%></li></p>
 
             <a href="<%= track.external_urls["spotify"] %>"><%= track.name %></a>
+            <%= track.artists[0].genres %> 
             <% end %>
           </ul>
         <br><br>
         <% end %>
-      </div>
+  </div>
+</div>
 
-      <hr>
-      <hr>
-
-      <hr>
-      <h1>User 2</h1>
-      <div class="user2">
-        <% @user2.playlists.each do |playlist| %>
-        <p><%= playlist.name %></p>
-        <ul>
-          <p><li><%= playlist.tracks.map(&:name) %></li></p><br><br>
-        </ul>
-        <% end %>
-      </div>
-      <hr>
-      <hr>
-
+    <div class="two">
+          <hr>
+          <h1>User 2</h1>
+          <div class="user2">
+            <% @user2.playlists.each do |playlist| %>
+            <p><%= playlist.name %></p>
+            <ul>
+              <p><li><%= playlist.tracks.map(&:name) %></li></p><br><br>
+            </ul>
+            <% end %>
+          </div>
+          <hr>
+          <hr>
+    </div>
 
       <%= form_tag root_path, method: "get" do %>
         <%= text_field_tag :q %>
@@ -111,3 +112,4 @@
       <% end %>
     <% end %>
   <% end %>
+</div>
