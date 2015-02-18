@@ -15,7 +15,6 @@ Bundler.require(*Rails.groups)
 
 module Spotibility
   class Application < Rails::Application
-    RSpotify::authenticate('8b1a2f49127e496ba2eae4203127694d', '60cf0492e972495cb4bb1310b6e09802')
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.

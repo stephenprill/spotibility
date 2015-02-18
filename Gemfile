@@ -6,6 +6,7 @@ group :development, :test do
   gem 'capybara'
   gem 'launchy'
   gem 'better_errors', '~> 2.1.1'
+  gem 'binding_of_caller'
 end
 
 group :production do
@@ -28,18 +29,12 @@ gem 'coffee-rails', '~> 4.0.0'
 # Installed For Trial
 
 gem 'rspotify'
-
 gem 'pry', '~> 0.10.1'
-
 gem 'omniauth', '~> 1.2.2'
 gem 'omniauth-spotify', '~> 0.0.5'
-
 gem 'faker'
-
 gem "pg"
-
 gem 'faraday'
-
 gem 'bootstrap-sass', '~> 3.2.0'
 
 # Use jquery as the JavaScript library

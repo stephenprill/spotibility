@@ -2,6 +2,11 @@ html {
   width: 100%;
 }
 
+.container{
+
+  background: red;
+}
+
 .user1 {
   background: green;
 }
@@ -10,24 +15,18 @@ html {
   background: gray;
 }
 
-.container{
-  width: 98%;
-  background: red;
-}
-
 .one{
-  margin: 0 -4px 0 0px;
-  width: 47%;
+/*   margin: 0 -4px 0 0px;
+     width: 47%; */
 /*   height: 500px; */
   background: yellow;
-  display: inline-block;
+  display: inline;
 }
 
 .two{
-  margin: 0 -4px 0 0px;
-  width: 47%;
+/*   margin: 0 -4px 0 0px; */
+/*   width: 47%; */
 /*   height: 500px; */
-  background: green;
+  background: blue;
   display: inline-block;
-
 }

@@ -1,1 +1,12 @@
-<%= @user.email %>
+<div class="one">
+      <hr>
+      <h1>User 1</h1>
+      <div class="user1">
+        <% @user1.playlists.each do |playlist| %>
+        <p><%= playlist.name %></p>
+        <ul>
+          <p><li><%= playlist.tracks.map(&:name) %></li></p><br><br>
+        </ul>
+        <% end %>
+      </div>
+</div>

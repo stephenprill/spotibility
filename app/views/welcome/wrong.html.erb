@@ -1,0 +1,111 @@
+
+<h2>Welcome</h2>
+
+  <%= link_to image_tag( "log_in-mobile.png", width: 300, height: 50), '/auth/spotify' %>
+  <br><br>
+
+  <iframe src="https://embed.spotify.com/?uri=http://open.spotify.com/user/stephenprill/playlist/0XSXEv7BpxQCS6UC02qciM" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
+    <br><br><hr>
+  <iframe src="https://embed.spotify.com/?uri=http://open.spotify.com/user/stephenprill/playlist/0XSXEv7BpxQCS6UC02qciM" width="300" height="80" frameborder="0" allowtransparency="true"></iframe>
+    <hr><br>
+
+<div class="container">
+  <div class="one">
+      <hr>
+
+      <h1>User 1</h1>
+      <div class="user1">
+        <% @user1.playlists.each do |playlist| %>
+
+        <h3>Playlist External Urls</h3>
+          <p><% playlist.external_urls.each do |external| %></p>
+          <%= link_to playlist.name, external[1] %>
+          <% end %>
+        <h3>Playlist Name</h3>
+          <p><%= playlist.name %></p>
+        <h3>Playlist Total</h3>
+          <p><%= playlist.total %></p>
+        <h3>Playlist Public</h3>
+          <p><%= playlist.public %></p>
+        <h3>Playlist Images </h3>
+          <p><%= playlist.images %></p>
+        <h3>Playlist Owner</h3>
+          <p><%= playlist.owner %></p>
+        <h3>Playlist Href</h3>
+          <p><%= link_to playlist.href %></p>
+        <h3>Playlist URI</h3>
+          <p><%= playlist.uri %></p>
+        <h3>Playlist External Urls</h3>
+          <p><%= playlist.external_urls %></p>
+        <h3>Playlist ID</h3>
+          <p><%= playlist.id %></p>
+
+          <img src="<%= playlist.images[2].to_h["url"] %>" alt="" />
+          <%= link_to playlist.name %>
+
+          <ul>
+            <p><li><% playlist.tracks.each do |track|%></li></p>
+            <a href="<%= track.external_urls["spotify"] %>"><%= track.name %></a>
+            <%= track.artists[0].genres %>
+            <% end %>
+          </ul>
+        <br><br>
+        <% end %>
+  </div>
+</div>
+
+    <div class="two">
+          <hr>
+          <h1>User 2</h1>
+          <div class="user2">
+            <% @user2.playlists.each do |playlist| %>
+            <p><%= playlist.name %></p>
+            <ul>
+              <p><li><%= playlist.tracks.map(&:name) %></li></p><br><br>
+            </ul>
+            <% end %>
+          </div>
+    </div>
+
+
+    <br><hr><br>
+
+      <%= form_tag root_path, method: "get" do %>
+        <%= text_field_tag :q %>
+        <%= submit_tag "Search Artist" %>
+      <% end %>
+
+      <% if @artists %>
+
+        <%= @artists.map { |artist| artist.name }.join(', ') %>
+        <% @artists.each do |artist| %>
+
+        <h2>Artist Name</h2>
+          <%= artist.name %>
+        <h2>Artist Populairty #wrong?</h2>
+          <%= artist.popularity %>
+        <h2>Artist Genres</h2>
+          <%= artist.genres %>
+        <h2>Artist Images</h2>
+          <% artist.images.each do |image| %>
+          <img src="<%= image['url'] %>" alt="" />
+        <h2>Artist Top Tracks</h2>
+          <% artist.top_tracks(:US).each do |toptracks| %>
+          <div>
+            <img src="<%= toptracks.album.images[2]["url"]%>" />
+            <%= link_to toptracks.name, "https://open.spotify.com/track/#{toptracks.uri.slice(14..toptracks.uri.length)}" %>
+            <% end %>
+        </div>
+        <h2>Artist Albums</h2>
+          <%= artist.albums.each do |album| %>
+          <div>
+            <img src="<%= album.images[2]["url"]%>" />
+            <p>
+              <%= link_to album.name %>
+            </p>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>

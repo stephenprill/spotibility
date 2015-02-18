@@ -1,31 +1,11 @@
-[#<RSpotify::Playlist:0x00000108e8d268
-@collaborative=false,
-@description=nil,
-@followers=nil,
-@images=[{"height"=>640, "url"=>"https://mosaic.scdn.co/640/0b672ef6f15cdf73ff528f8b2df1d23d3ae3f8e2a634a614e670e2f07f485cbf90785218e3de82968893766d3ba0983788adf79b5405bc9b9b32c333737b0ded593bef9a30bcc09fe633d1f0bad27067", "width"=>640}, {"height"=>300, "url"=>"https://mosaic.scdn.co/300/0b672ef6f15cdf73ff528f8b2df1d23d3ae3f8e2a634a614e670e2f07f485cbf90785218e3de82968893766d3ba0983788adf79b5405bc9b9b32c333737b0ded593bef9a30bcc09fe633d1f0bad27067", "width"=>300}, {"height"=>60, "url"=>"https://mosaic.scdn.co/60/0b672ef6f15cdf73ff528f8b2df1d23d3ae3f8e2a634a614e670e2f07f485cbf90785218e3de82968893766d3ba0983788adf79b5405bc9b9b32c333737b0ded593bef9a30bcc09fe633d1f0bad27067", "width"=>60}],
-@name="The Echelon Effect",
-@public=true,
-@snapshot_id=nil,
-@total=69,
+require 'faraday'
 
-  @owner=#<RSpotify::User:0x00000108e8d088
-  @country=nil,
-  @display_name=nil,
-  @email=nil,
-  @followers=nil,
-  @images=nil,
-  @product=nil,
-  @external_urls={"spotify"=>"http://open.spotify.com/user/stephenprill"},
-  @href="https://api.spotify.com/v1/users/stephenprill",
-  @id="stephenprill",
-  @type="user",
-  @uri="spotify:user:stephenprill">,
-  @tracks_cache=nil,
-  @tracks_added_at=nil,
-  @tracks_added_by=nil,
-  which do you use for security - href gives you 401
-  @external_urls={"spotify"=>"http://open.spotify.com/user/stephenprill/playlist/08OFtWCARfXIjyf1E37eFO"},
-  @href="https://api.spotify.com/v1/users/stephenprill/playlists/08OFtWCARfXIjyf1E37eFO",
-  @id="08OFtWCARfXIjyf1E37eFO",
-   @type="playlist",
-   @uri="spotify:user:stephenprill:playlist:08OFtWCARfXIjyf1E37eFO">,
+token = "BQCWoVpOwD_JACHPN4vWPC7eit2t40S1IsY1yA6gIEJwuqIhpsJqy2ijp2ogFJxIVKKFTPLvGGjVjAMDcNkqFGVTe-Er2ct1FBSc3WOudni9tr2zKRy5DUA5KD8HPZ86Qb6itSnEo7Z7EDBIC-O-pt_qCXF9RRr6ZNLYkFrahoI_HueEgKocNWSlanYzJN-xs0BsAxNER-27hA"
+
+conn = Faraday.new(:url => 'https://api.spotify.com/')
+
+response = conn.get("/v1/me") do |req|
+  req.headers['Authorization'] = "Bearer #{token}"
+end
+
+puts response.body
