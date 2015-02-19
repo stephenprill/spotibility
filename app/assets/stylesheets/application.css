@@ -3,6 +3,10 @@ html {
   font-family: 'Montserrat', sans-serif;
 }
 
+h1 {
+  font-size: 150px;
+
+}
 .container{
 
   background: red;
