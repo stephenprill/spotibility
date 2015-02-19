@@ -10,5 +10,12 @@
 <div>
   <% @tracks[:items].each do |track| %>
     <%= image_tag track[:track][:album][:images][0][:url], size: "150" %>
+    <div>
+      <p><%= track[:track][:name] %></p>
+    </div>
+    <p><%= track[:track][:id] %></p>
+    <p><%= track[:track][:duration_ms] %></p>
+    <p><%= track[:track][:preview_url] %></p>  
+    <hr>
     <% end %>
 </div>
