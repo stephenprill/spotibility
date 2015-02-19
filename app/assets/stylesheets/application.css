@@ -3,35 +3,31 @@ html {
   font-family: 'Montserrat', sans-serif;
 }
 
-h1 {
-  font-size: 150px;
+body {
+  background-image: inherit;
+}
 
+
+.welcome-header {
+  font-size: 85px;
+  text-align: center;
+  text-shadow: -1px 0 gray, 0 1px gray, 1px 0 gray, 0 -1px white;
+}
+
+
+.login-button {
+  text-align: center;
 }
 .container{
-
   background: red;
 }
 
-.user1 {
-  background: green;
-}
-
-.user2 {
-  background: gray;
-}
-
-.one{
-/*   margin: 0 -4px 0 0px;
-     width: 47%; */
-/*   height: 500px; */
-  background: yellow;
-  display: inline;
-}
-
-.two{
-/*   margin: 0 -4px 0 0px; */
-/*   width: 47%; */
-/*   height: 500px; */
-  background: blue;
-  display: inline-block;
+.welcome {
+  background-image: url("oldcassette.jpg");
+  /* background-size: cover;
+  background-position:fixed;
+  opacity:.8;
+  background-size: inherit;
+  background-position: 49% 10%
+  opacity: 0.2; */
 }
