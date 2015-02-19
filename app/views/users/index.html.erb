@@ -1,7 +1,8 @@
+<% @users.each do |user| %>
+  <%= link_to user.spotify_id, user_path(user) %>
+  <h3><%= @similarity_scores[user.id] %></h3>
+<% end %>
+
 <div class="one">
   <%= debug @tracks %>
 </div>
-
-<% @users.each do |user| %>
-  <%= link_to user.spotify_id, user_path(user) %>
-<% end %>

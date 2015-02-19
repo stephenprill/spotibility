@@ -8,3 +8,10 @@
 # end
 #
 # puts response.body
+
+
+#
+# <iframe src="https://embed.spotify.com/?uri=http://open.spotify.com/user/stephenprill/playlist/0XSXEv7BpxQCS6UC02qciM" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
+#   <br><br><hr>
+# <iframe src="https://embed.spotify.com/?uri=http://open.spotify.com/user/stephenprill/playlist/0XSXEv7BpxQCS6UC02qciM" width="300" height="80" frameborder="0" allowtransparency="true"></iframe>
+#   <hr><br>
