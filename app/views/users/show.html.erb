@@ -1,0 +1,23 @@
+<%= @user.email %>
+
+
+<hr>
+
+<% @playlists[:items].each do |playlist| %>
+<div>
+  <%= image_tag playlist[:images][0][:url], size: "40" %>
+
+  <% if @tracks[playlist[:id]] %>
+    <% @tracks[playlist[:id]].each do |track| %>
+    <div>
+      <%= track[:track][:name] %>
+    </div>
+    <% end %>
+
+  <% end %>
+</div>
+<% end %>
+
+<pre>
+<%= JSON.pretty_generate @playlists %>
+</pre>
