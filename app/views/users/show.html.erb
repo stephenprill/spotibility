@@ -1,24 +1,29 @@
+<table>
+  <tr>
+    <td style="vertical-align: top;">
+      <h1>
+        <%= @me.spotify_id %>
+      </h1>
+        <% @my_artists.each do |artist| %>
+          <p>
+            <%= artist %>
+          </p>
+        <% end %>
+    </td>
 
+    <td style="vertical-align: top;">
+      <h1>
+        <%= @user.spotify_id %>
+      </h1>
 
-<%= link_to current_user.spotify_id, user_path %>
-<hr>
-<%= link_to @user.spotify_id, user_path %>
-<hr>
-<% @playlists[:items].each do |playlist| %>
-<div>
-  <%= image_tag playlist[:images][0][:url], size: "80" %>
+      <% @user_artists.each do |artist| %>
+        <p>
+          <%= artist %>
+        </p>
+      <% end %>
+<hr><hr>
+    <%= @match_percentage %>%
 
-  <% if @tracks[playlist[:id]] %>
-    <% @tracks[playlist[:id]].each do |track| %>
-    <div>
-      <%= track[:track][:name] %>
-    </div>
-    <% end %>
-
-  <% end %>
-</div>
-<% end %>
-
-<pre>
-<%= JSON.pretty_generate @playlists %>
-</pre>
+    </td>
+  </tr>
+</table>

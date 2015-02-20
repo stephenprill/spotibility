@@ -24,59 +24,58 @@ class UsersController < ApplicationController
   end
 
   def index
-    # current_user = find the user by the session :id
     @user = User.find(session[:user_id])
-
-    # end goal
-    # @users = User.most_similar_to(@user)
-
-    # case 1
     @users = User.where("id <> ?", @user.id)
-
-    # case 2 - bad because of SQL injection
-    # @user.id = 'DROP table users'
-    # @user.id = 'SELECT * from users WHERE admin = t'
-    # SQL injection
-    # @users = User.where("id <> #{@user.id}")
-
-    # case 3 - bad because looping through arrays is slower than SQL queries
-    # @users = User.all
-    # @users -= [@user]
-
-    @similarity_scores = {}
-    # example
-    # {
-    #    1: 37,
-    #    2: 3,
-    #    3: 0
-    # }
-    @users.each do |user|
-      @similarity_scores[user.id] = user.similarity(@user.artists)
-    end
-
-    # sort users by overlapping artists
-    # comparator
-    @users.sort do |a, b|
-      a.similarity(@user.artists) <=> b.similarity(@user.artists)
-    end
-
-    # get the user's spotify id (which is the currently logged in user's spotify id)
-    # @tracks = call_spotify("/v1/users/#{@user.spotify_id}/playlists")
-    @tracks = call_spotify("/v1/users/#{@user.spotify_id}/playlists")
-    @tracks = call_spotify("/v1/me/tracks")
   end
 
   def show
-    @user = User.find(params[:id])
-
-    @playlists = call_spotify("/v1/users/#{@user.spotify_id}/playlists")
-
-    @tracks = {}
-
-    @playlists[:items].each do |playlist|
-      tracks = call_spotify("/v1/users/#{@user.spotify_id}/playlists/#{playlist[:id]}/tracks")[:items]
-      @tracks[playlist[:id]] = tracks
+    @me = User.find(session[:user_id])
+    @my_playlists = call_spotify("/v1/users/#{@me.spotify_id}/playlists")
+    @my_tracks = {}
+    @my_playlists[:items].each do |playlist|
+      tracks = call_spotify("/v1/users/#{@me.spotify_id}/playlists/#{playlist[:id]}/tracks")[:items]
+      @my_tracks[playlist[:id]] = tracks
     end
+
+    @my_artists= []
+
+    @my_playlists[:items].each do |playlist|
+      if @my_tracks[playlist[:id]]
+        @my_tracks[playlist[:id]].each do |track|
+          @my_artists += track[:track][:artists].map{|artist| artist[:name] }
+        end
+      end
+    end
+    @my_artists.uniq!
+    @my_artists.sort!
+
+    @user = User.find(params[:id])
+    @user_playlists = call_spotify("/v1/users/#{@user.spotify_id}/playlists")
+    @user_tracks = {}
+    @user_playlists[:items].each do |playlist|
+      tracks = call_spotify("/v1/users/#{@user.spotify_id}/playlists/#{playlist[:id]}/tracks")[:items]
+      @user_tracks[playlist[:id]] = tracks
+    end
+
+    @user_artists = []
+
+    @user_playlists[:items].each do |playlist|
+      if @user_tracks[playlist[:id]]
+        @user_tracks[playlist[:id]].each do |track|
+          @user_artists += track[:track][:artists].map{|artist| artist[:name] }
+        end
+      end
+    end
+    @user_artists.uniq!
+    @user_artists.sort!
+
+    @compare = @user_artists + @my_artists
+    @total_artists = @compare.length
+    @unique_artists = @compare.uniq.length
+    @difference = @total_artists - @unique_artists
+    @match_percentage = ((@difference/@unique_artists.to_f) * 100).round(2)
+
+
   end
 
   private

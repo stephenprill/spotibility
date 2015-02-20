@@ -1,23 +1,13 @@
+<%= current_user.spotify_id %>
+
+<h3>You</h3>
+
+<hr>
+
+<h3>Compare</h3>
+
 <% @users.each do |user| %>
-  <%= link_to user.spotify_id, user_path(user) %>
-  <h3><%= @similarity_scores[user.id] %></h3>
-<% end %>
-
-<div class="one">
-  <%= debug @tracks[:items] %>
-</div>
-
 <div>
-  <% @tracks[:items].each do |track| %>
-    <%= image_tag track[:track][:album][:images][0][:url], size: "150" %>
-    <div>
-      <p><%= track[:track][:name].to_s %></p>
-    </div>
-    <p><%= track[:track][:id] %></p>
-    <iframe src="https://embed.spotify.com/?uri=spotify:track:<%= track[:track][:id].to_s %>" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
-
-    <p><%= track[:track][:duration_ms] %></p>
-    <p><%= track[:track][:preview_url] %></p>
-    <hr>
-    <% end %>
+  <%= link_to user.spotify_id, user_path(user) %>
 </div>
+<% end %>

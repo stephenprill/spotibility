@@ -4,7 +4,7 @@ html {
 }
 
 body {
-  background-image: inherit;
+  position: relative;
 }
 
 
@@ -23,11 +23,12 @@ body {
 }
 
 .welcome {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
   background-image: url("oldcassette.jpg");
-  /* background-size: cover;
-  background-position:fixed;
-  opacity:.8;
-  background-size: inherit;
-  background-position: 49% 10%
-  opacity: 0.2; */
+  background-position: 49% 10%;
+
 }
