@@ -1,0 +1,98 @@
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+html {
+  /* width: 100%; */
+  font-family: 'Montserrat', sans-serif;
+}
+
+body {
+  /* position: relative; */
+}
+
+
+.welcome-header {
+  font-size: 85px;
+  text-align: center;
+  text-shadow: -1px 0 gray, 0 1px gray, 1px 0 gray, 0 -1px white;
+}
+
+
+.login-button {
+  text-align: center;
+}
+.container{
+  background: red;
+}
+
+.welcome {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-image: url("oldcassette.jpg");
+  background-position: 49% 10%;
+}
+
+.columns:before,
+.columns:after {
+ content:"";
+ display:table;
+}
+.columns:after {
+ clear:both;
+}
+.columns {
+ zoom:1;
+ overflow: hidden;
+}
+
+.column {
+ float: left;
+ white-space: nowrap;
+}
+
+.two.columns .column, .column-two {
+ width: 50%;
+}
+
+.columns.three .column, .column-three {
+ width: 33.33333%;
+}
+
+.four.columns .column, .column.column-four {
+ width: 25%;
+}
+
+.match-title {
+  font-family: 'Raleway', sans-serif;
+  text-align: center;
+  background: black;
+  color: white;
+  padding: 0px;
+  margin: 0px;
+  &:hover {
+    color: gray;
+  }
+}
+
+.box-1 {
+  font-family: 'Raleway', sans-serif;
+  background: #66f062;
+  padding: 20px;
+  overflow: auto;
+}
+
+.box-2 {
+  font-family: 'Raleway', sans-serif;
+  background: #b0b0b0;
+  padding: 20px;
+}
+
+a {
+  color: gray;
+  text-decoration: none;
+
+}

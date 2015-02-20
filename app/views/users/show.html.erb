@@ -1,29 +1,17 @@
-<table>
-  <tr>
-    <td style="vertical-align: top;">
-      <h1>
-        <%= @me.spotify_id %>
-      </h1>
-        <% @my_artists.each do |artist| %>
-          <p>
-            <%= artist %>
-          </p>
-        <% end %>
-    </td>
+<h1 class="match-title">Match Percentage: <%=@match_percentage %><%= link_to ' Home Page', root_path %> </h1>
+<section class="columns">
+  <div class="column column-two box-1">
+    <h2><%= @me.spotify_id %></h2>
+    <% @my_artists.each do |artist| %>
+    <h3><%= artist %></h3>
+    <% end %>
+  </div>
 
-    <td style="vertical-align: top;">
-      <h1>
-        <%= @user.spotify_id %>
-      </h1>
+  <div class="column column-two box-2">
+    <h3><%= @user.spotify_id %></h3>
+    <% @user_artists.each do |artist| %>
+    <h3><%= artist %></h3>
+    <% end %>
+  </div>
 
-      <% @user_artists.each do |artist| %>
-        <p>
-          <%= artist %>
-        </p>
-      <% end %>
-<hr><hr>
-    <%= @match_percentage %>%
-
-    </td>
-  </tr>
-</table>
+</section>
