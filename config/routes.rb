@@ -3,5 +3,4 @@ Rails.application.routes.draw do
   get "/auth/:provider/callback" => "users#spotify"
   resources :dashboard
   resources :users
-  resources :peoples
 end
