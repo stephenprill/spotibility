@@ -5,7 +5,7 @@ class UsersController < ApplicationController
     session[:token] = request.env['omniauth.auth']['credentials']['token']
     user = User.find_or_initialize_by(spotify_id: request.env['omniauth.auth']['extra']['raw_info']['id'])
     user.email = request.env['omniauth.auth']['extra']['raw_info']['email']
-
+    user.name = request.env['omniauth.auth']['extra']['raw_info']['display_name']
     # get user tracks
     tracks = call_spotify("/v1/me/tracks?limit=50")
 

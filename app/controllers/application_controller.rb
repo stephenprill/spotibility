@@ -4,9 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def current_user
-    # if session[:spotify_id]
       User.find_by(id: session[:user_id])
-    # end
   end
 
   helper_method :current_user
