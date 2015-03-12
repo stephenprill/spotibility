@@ -11,6 +11,10 @@ body {
   /* position: relative; */
 }
 
+h4 {
+  margin: 0;
+}
+
 
 .welcome-header {
   font-size: 85px;
@@ -74,25 +78,39 @@ body {
   padding: 0px;
   margin: 0px;
   &:hover {
-    color: gray;
+    color: #949494;
   }
 }
 
 .box-1 {
   font-family: 'Raleway', sans-serif;
-  background: #66f062;
+  background: #648F00;
   padding: 20px;
   overflow: auto;
+  border: 1px solid black;
 }
 
 .box-2 {
   font-family: 'Raleway', sans-serif;
-  background: #b0b0b0;
+  background: #949494;
   padding: 20px;
+  border: 1px solid black;
+  border-left: none;
+}
+
+.current-user-list {
+  background: #648F00;
+}
+
+.compared-user-list {
+  background: #949494;
 }
 
 a {
-  color: gray;
+  color: #949494;
   text-decoration: none;
+}
 
+.user-header {
+  border-bottom :2px solid black;
 }

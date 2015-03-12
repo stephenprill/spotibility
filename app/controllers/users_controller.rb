@@ -74,8 +74,6 @@ class UsersController < ApplicationController
     @unique_artists = @compare.uniq.length
     @difference = @total_artists - @unique_artists
     @match_percentage = ((@difference/@unique_artists.to_f) * 100).round(2)
-
-
   end
 
   private
