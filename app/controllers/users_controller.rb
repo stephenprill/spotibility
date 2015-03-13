@@ -1,11 +1,24 @@
 class UsersController < ApplicationController
 
+  before_action :ensure_current_user, except: :spotify
+
+  # probably moves to application controller
+  def ensure_current_user
+    # if current_user
+    # otherwise redirect somewhere root_path
+  end
+
   def spotify
     spotify_user = RSpotify::User.new(request.env['omniauth.auth'])
     session[:token] = request.env['omniauth.auth']['credentials']['token']
     user = User.find_or_initialize_by(spotify_id: request.env['omniauth.auth']['extra']['raw_info']['id'])
     user.email = request.env['omniauth.auth']['extra']['raw_info']['email']
-    user.name = request.env['omniauth.auth']['extra']['raw_info']['display_name']
+
+    display_name = request.env['omniauth.auth']['extra']['raw_info']['display_name']
+    id = request.env['omniauth.auth']['extra']['raw_info']['id']
+
+    user.name = display_name.presence || id
+
     # get user tracks
     tracks = call_spotify("/v1/me/tracks?limit=50")
 

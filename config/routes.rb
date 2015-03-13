@@ -3,5 +3,10 @@ Rails.application.routes.draw do
   get "/auth/:provider/callback" => "users#spotify"
   get "/signout" => "authentications#signout", as: :signout
   resources :dashboard
-  resources :users
+  resources :users do
+    resources :comparisons do
+      get 'by_artist', on: :collection
+    end
+  end
+
 end
