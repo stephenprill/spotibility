@@ -1,3 +1,5 @@
+// Global
+
 *, *:before, *:after {
   box-sizing: border-box;
 }
@@ -15,30 +17,6 @@ h4 {
   margin: 0;
 }
 
-
-.welcome-header {
-  font-size: 85px;
-  text-align: center;
-  text-shadow: -1px 0 gray, 0 1px gray, 1px 0 gray, 0 -1px white;
-}
-
-
-.login-button {
-  text-align: center;
-}
-.container{
-  background: red;
-}
-
-.welcome {
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  background-image: url("oldcassette.jpg");
-  background-position: 49% 10%;
-}
 
 .columns:before,
 .columns:after {
@@ -69,6 +47,53 @@ h4 {
 .four.columns .column, .column.column-four {
  width: 25%;
 }
+
+// Classes Temp
+.pull-left {
+  float: left !important;
+}
+.pull-right {
+  float: right !important;
+}
+
+// Welcome
+
+.welcome-header {
+  font-size: 85px;
+  text-align: center;
+  text-shadow: -1px 0 gray, 0 1px gray, 1px 0 gray, 0 -1px white;
+}
+
+
+.login-button {
+  text-align: center;
+}
+.container{
+  background: red;
+}
+
+.welcome {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-image: url("oldcassette.jpg");
+  background-position: 49% 10%;
+}
+
+.hello {
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-image: url("myrecordplayer.jpg");
+  position: fixed;
+  z-index: -1;
+  opacity: 0.967;
+}
+
+// For User Show
 
 .match-title {
   font-family: 'Raleway', sans-serif;
@@ -112,5 +137,23 @@ a {
 }
 
 .user-header {
+  border-bottom :2px solid black;
+}
+
+//For User Index
+
+.welcome-user {
+  margin-top: 10px;
+  margin-right: 10px;
+  margin-left: 50px;
+  margin-bottom: 50px;
+  border-bottom :2px solid black;
+}
+
+.welcome-compare {
+  margin-top: 10px;
+  margin-right: 10px;
+  margin-left: 50px;
+  margin-bottom: 50px;
   border-bottom :2px solid black;
 }

@@ -14,5 +14,5 @@ class WelcomeController < ApplicationController
   #   @artists = RSpotify::Artist.search(params[:q])
   # end
 
-
+ 
 end

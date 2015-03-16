@@ -8,24 +8,32 @@
       <h1>
         <%= @me.spotify_id %>
       </h1>
-    </div class="current-user-list">
+    </div>
+
+    <div class="current-user-list">
+    <h6>Your Unique Artists:   <%= @my_artists.length %> TOTAL</h6>
         <% @my_artists.each do |artist| %>
           <h3>
             <%= artist %>
           </h3>
         <% end %>
+      </div>
   </div>
 
   <div class="column column-two box-2">
     <div class="user-header">
       <h1>
-        <%= @user.name %>
+        <%= @you.name %>
       </h1>
-    </div class="compared-user-list">
-        <% @user_artists.each do |artist| %>
+    </div>
+
+    <div class="compared-user-list">
+      <h6>Their Unique Artists:   <%= @your_artists.length %> TOTAL</h6>
+        <% @your_artists.each do |artist| %>
           <h3>
             <%= artist %>
           </h3>
         <% end %>
+    </div>
   </div>
 </section>

@@ -20,7 +20,7 @@ class UsersController < ApplicationController
     user.name = display_name.presence || id
 
     # get user tracks
-    tracks = call_spotify("/v1/me/tracks?limit=50")
+    tracks = Spotify.new(session[:token], user.spotify_id).setup("/v1/me/tracks?limit=50")
 
     # parse tracks and save artists to database
     artists = tracks[:items].map do |track|
@@ -43,61 +43,45 @@ class UsersController < ApplicationController
 
   def show
     @me = User.find(session[:user_id])
-    @my_playlists = call_spotify("/v1/users/#{@me.spotify_id}/playlists")
-    @my_tracks = {}
-    @my_playlists[:items].each do |playlist|
-      tracks = call_spotify("/v1/users/#{@me.spotify_id}/playlists/#{playlist[:id]}/tracks")[:items]
-      @my_tracks[playlist[:id]] = tracks
-    end
+    @my_session = Spotify.new(session[:token], @me.spotify_id)
+    @my_playlists = @my_session.playlists
+    @my_playlist_songs = @my_session.songs_per_playlist(@my_playlists)
+    @my_artists = @my_session.artists
 
-    @my_artists= []
 
-    @my_playlists[:items].each do |playlist|
-      if @my_tracks[playlist[:id]]
-        @my_tracks[playlist[:id]].each do |track|
-          @my_artists += track[:track][:artists].map{|artist| artist[:name] }
-        end
-      end
-    end
-    @my_artists.uniq!
-    @my_artists.sort!
+    @you = User.find(params[:id])
+    @your_session = Spotify.new(session[:token], @you.spotify_id)
+    @your_playlists = @your_session.playlists
+    @your_playlist_songs = @your_session.songs_per_playlist(@your_playlists)
+    @your_artists = @your_session.artists
 
-    @user = User.find(params[:id])
-    @user_playlists = call_spotify("/v1/users/#{@user.spotify_id}/playlists")
-    @user_tracks = {}
-    @user_playlists[:items].each do |playlist|
-      tracks = call_spotify("/v1/users/#{@user.spotify_id}/playlists/#{playlist[:id]}/tracks")[:items]
-      @user_tracks[playlist[:id]] = tracks
-    end
 
-    @user_artists = []
-
-    @user_playlists[:items].each do |playlist|
-      if @user_tracks[playlist[:id]]
-        @user_tracks[playlist[:id]].each do |track|
-          @user_artists += track[:track][:artists].map{|artist| artist[:name] }
-        end
-      end
-    end
-    @user_artists.uniq!
-    @user_artists.sort!
-
-    @compare = @user_artists + @my_artists
-    @total_artists = @compare.length
-    @unique_artists = @compare.uniq.length
-    @difference = @total_artists - @unique_artists
-    @match_percentage = ((@difference/@unique_artists.to_f) * 100).round(2)
+    @match_percentage = Comparison.new(@my_artists, @your_artists).match
   end
 
-  private
 
-  def call_spotify(path)
-    token = session[:token]
 
-    conn = Faraday.new(:url => 'https://api.spotify.com/')
-    response = conn.get(path) do |req|
-      req.headers['Authorization'] = "Bearer #{token}"
-    end
-    JSON.parse(response.body, symbolize_names: true)
+    # @user = User.find(params[:id])
+    # @user_playlists = call_spotify("/v1/users/#{@user.spotify_id}/playlists")
+    # @user_tracks = {}
+    # @user_playlists[:items].each do |playlist|
+    #   tracks = call_spotify("/v1/users/#{@user.spotify_id}/playlists/#{playlist[:id]}/tracks")[:items]
+    #   @user_tracks[playlist[:id]] = tracks
+    # end
+    #
+    # @user_artists = []
+    #
+    # @user_playlists[:items].each do |playlist|
+    #   if @user_tracks[playlist[:id]]
+    #     @user_tracks[playlist[:id]].each do |track|
+    #       @user_artists += track[:track][:artists].map{|artist| artist[:name] }
+    #     end
+    #   end
+    # end
+    # @user_artists.uniq!
+    # @user_artists.sort!
+    #
+
+
+
   end
-end
