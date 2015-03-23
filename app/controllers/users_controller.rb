@@ -44,19 +44,22 @@ class UsersController < ApplicationController
   def show
     @me = User.find(session[:user_id])
     @my_session = Spotify.new(session[:token], @me.spotify_id)
-    @my_playlists = @my_session.playlists
-    @my_playlist_songs = @my_session.songs_per_playlist(@my_playlists)
+
     @my_artists = @my_session.artists
+    @my_tracks = @my_session.track_names
 
 
     @you = User.find(params[:id])
     @your_session = Spotify.new(session[:token], @you.spotify_id)
-    @your_playlists = @your_session.playlists
-    @your_playlist_songs = @your_session.songs_per_playlist(@your_playlists)
+
     @your_artists = @your_session.artists
+    @your_tracks = @your_session.track_names
 
 
-    @match_percentage = Comparison.new(@my_artists, @your_artists).match
+    @artist_match_percentage = Comparison.new(@my_artists, @your_artists).match
+    @track_match_percentage = Comparison.new(@my_tracks, @your_tracks).match
+
+    @match_percentage = [@track_match_percentage, @artist_match_percentage].sum / 2
   end
 
 
