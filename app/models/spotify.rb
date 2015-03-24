@@ -18,7 +18,7 @@ class Spotify
 
     my_tracks.each do |playlist_id, tracks|
       tracks.each do |track|
-        binding.pry
+        # binding.pry
         @my_artists += track[:track][:artists].map{|artist| artist[:name] }
       end
     end
