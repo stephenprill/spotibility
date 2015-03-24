@@ -9,7 +9,6 @@ class UsersController < ApplicationController
   end
 
   def spotify
-    spotify_user = RSpotify::User.new(request.env['omniauth.auth'])
     session[:token] = request.env['omniauth.auth']['credentials']['token']
     user = User.find_or_initialize_by(spotify_id: request.env['omniauth.auth']['extra']['raw_info']['id'])
     user.email = request.env['omniauth.auth']['extra']['raw_info']['email']
