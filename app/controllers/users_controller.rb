@@ -12,9 +12,7 @@ class UsersController < ApplicationController
 
     # probably moves to application controller
  def ensure_current_user
-   if current_user
-
-   else
+   unless current_user
      redirect_to root_path
    # otherwise redirect somewhere root_path
    end

@@ -58,7 +58,7 @@ class Spotify
         req.headers['Authorization'] = "Bearer #{@token}"
       end
       tracks = JSON.parse(response.body, symbolize_names: true)
-      @my_tracks[playlist[:id]] = tracks[:items]
+      @my_tracks[playlist[:id]] = tracks[:items] || []
     end
     # binding.pry
 
