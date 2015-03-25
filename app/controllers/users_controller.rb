@@ -3,12 +3,22 @@ class UsersController < ApplicationController
 
     before_action :ensure_current_user, except: :spotify
 
-    def ensure_current_user
-      unless current_user
-        session[:first_url] = request.url if request.get?
-        redirect_to root_path, notice: 'You must be logged in to access that action'
-      end
-    end
+    # def ensure_current_user
+    #   unless current_user
+    #     session[:first_url] = request.url if request.get?
+    #     redirect_to root_path
+    #   end
+    # end
+
+    # probably moves to application controller
+ def ensure_current_user
+   if current_user
+
+   else
+     redirect_to root_path
+   # otherwise redirect somewhere root_path
+   end
+ end
 
   def spotify
 
