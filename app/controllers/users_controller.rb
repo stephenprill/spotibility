@@ -19,9 +19,11 @@ class UsersController < ApplicationController
     user.name = display_name.presence || id
 
     # get user tracks
+
     tracks = Spotify.new(session[:token], user.spotify_id).setup("/v1/me/tracks?limit=50")
 
     # parse tracks and save artists to database
+
     artists = tracks[:items].map do |track|
       track[:track][:artists].first[:name]
     end
@@ -63,26 +65,6 @@ class UsersController < ApplicationController
 
 
 
-    # @user = User.find(params[:id])
-    # @user_playlists = call_spotify("/v1/users/#{@user.spotify_id}/playlists")
-    # @user_tracks = {}
-    # @user_playlists[:items].each do |playlist|
-    #   tracks = call_spotify("/v1/users/#{@user.spotify_id}/playlists/#{playlist[:id]}/tracks")[:items]
-    #   @user_tracks[playlist[:id]] = tracks
-    # end
-    #
-    # @user_artists = []
-    #
-    # @user_playlists[:items].each do |playlist|
-    #   if @user_tracks[playlist[:id]]
-    #     @user_tracks[playlist[:id]].each do |track|
-    #       @user_artists += track[:track][:artists].map{|artist| artist[:name] }
-    #     end
-    #   end
-    # end
-    # @user_artists.uniq!
-    # @user_artists.sort!
-    #
 
 
 
