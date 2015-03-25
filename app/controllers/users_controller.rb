@@ -1,6 +1,15 @@
 class UsersController < ApplicationController
 
 
+    before_action :ensure_current_user, except: :spotify
+
+    def ensure_current_user
+      unless current_user
+        session[:first_url] = request.url if request.get?
+        redirect_to root_path, notice: 'You must be logged in to access that action'
+      end
+    end
+
   def spotify
 
     session[:token] = request.env['omniauth.auth']['credentials']['token']
