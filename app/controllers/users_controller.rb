@@ -9,6 +9,7 @@ class UsersController < ApplicationController
   end
 
   def spotify
+    
     session[:token] = request.env['omniauth.auth']['credentials']['token']
     user = User.find_or_initialize_by(spotify_id: request.env['omniauth.auth']['extra']['raw_info']['id'])
     user.email = request.env['omniauth.auth']['extra']['raw_info']['email']
@@ -65,6 +66,26 @@ class UsersController < ApplicationController
 
 
 
+    # @user = User.find(params[:id])
+    # @user_playlists = call_spotify("/v1/users/#{@user.spotify_id}/playlists")
+    # @user_tracks = {}
+    # @user_playlists[:items].each do |playlist|
+    #   tracks = call_spotify("/v1/users/#{@user.spotify_id}/playlists/#{playlist[:id]}/tracks")[:items]
+    #   @user_tracks[playlist[:id]] = tracks
+    # end
+    #
+    # @user_artists = []
+    #
+    # @user_playlists[:items].each do |playlist|
+    #   if @user_tracks[playlist[:id]]
+    #     @user_tracks[playlist[:id]].each do |track|
+    #       @user_artists += track[:track][:artists].map{|artist| artist[:name] }
+    #     end
+    #   end
+    # end
+    # @user_artists.uniq!
+    # @user_artists.sort!
+    #
 
 
 

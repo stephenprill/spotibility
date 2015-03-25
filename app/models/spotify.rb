@@ -37,7 +37,7 @@ class Spotify
       end
     end
 
-    @my_track_names.uniq!.sort!
+    @my_track_names.uniq!
     @my_track_names.sort!
     @my_track_names
   end
@@ -46,6 +46,7 @@ class Spotify
 
   def my_tracks
     return @my_tracks if @my_tracks.present?
+
 
     response = @conn.get("/v1/users/#{@spotify_id}/playlists") do |req|
       req.headers['Authorization'] = "Bearer #{@token}"
@@ -60,6 +61,7 @@ class Spotify
       tracks = JSON.parse(response.body, symbolize_names: true)
       @my_tracks[playlist[:id]] = tracks[:items]
     end
+    # binding.pry
 
     @my_tracks
   end
