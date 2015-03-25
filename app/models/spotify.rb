@@ -14,9 +14,9 @@ class Spotify
   end
 
   def artists
-    @my_artists= []
-
+    @my_artists=[]
     my_tracks.each do |playlist_id, tracks|
+
       tracks.each do |track|
         @my_artists += track[:track][:artists].map{|artist| artist[:name] }
       end
@@ -31,11 +31,11 @@ class Spotify
   def track_names
     @my_track_names = []
 
-    my_tracks.each do |playlist_id, tracks|
-      tracks.each do |track|
-        @my_track_names << track[:track][:name]
+      my_tracks.each do |playlist_id, tracks|
+        tracks.each do |track|
+          @my_track_names << track[:track][:name]
+        end
       end
-    end
 
     @my_track_names.uniq!
     @my_track_names.sort!
@@ -46,7 +46,6 @@ class Spotify
 
   def my_tracks
     return @my_tracks if @my_tracks.present?
-
 
     response = @conn.get("/v1/users/#{@spotify_id}/playlists") do |req|
       req.headers['Authorization'] = "Bearer #{@token}"
