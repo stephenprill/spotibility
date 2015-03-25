@@ -4,12 +4,23 @@ class UsersController < ApplicationController
 
   # probably moves to application controller
   def ensure_current_user
-    # if current_user
+    if current_user.exists?
+      redirect_to user_path
+    else
+      redirect_to root_path
     # otherwise redirect somewhere root_path
+    end
+  end
+
+  def ensure_current_user
+    unless current_user
+      session[:first_url] = request.url if request.get?
+      redirect_to signin_path, notice: 'You must be logged in to access that action'
+    end
   end
 
   def spotify
-    
+
     session[:token] = request.env['omniauth.auth']['credentials']['token']
     user = User.find_or_initialize_by(spotify_id: request.env['omniauth.auth']['extra']['raw_info']['id'])
     user.email = request.env['omniauth.auth']['extra']['raw_info']['email']
