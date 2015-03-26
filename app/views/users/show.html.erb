@@ -18,12 +18,24 @@
       </div>
 
       <div class="current-user-list">
-      <h6>Your Unique Artists:   <%= @my_artists.length %> TOTAL</h6>
+        <div class="user-header">
+          <h3><%= @me.name %>'s Artists (<%= @my_artists.length %> total)</h3>
+        </div>
           <% @my_artists.each do |artist| %>
-            <h3>
+            <h5>
               <%= artist %>
-            </h3>
+            </h5>
           <% end %>
+
+        <div class="user-tracks">
+          <h3><%= @me.name %>'s Tracks (<%= @my_tracks.length %> total)</h3>
+        </div>
+
+        <% @my_tracks.each do |track| %>
+          <h5>
+            <%= track %>
+          </h5>
+        <% end %>
       </div>
     </div>
   </div>
@@ -40,12 +52,24 @@
       </div>
 
       <div class="compared-user-list">
-        <h6>Their Unique Artists:   <%= @your_artists.length %> TOTAL</h6>
+        <div class="user-header">
+          <h3><%= @you.name %>'s Artists (<%= @your_artists.length %> total)</h3>
+        </div>
           <% @your_artists.each do |artist| %>
-            <h3>
+            <h5>
               <%= artist %>
-            </h3>
+            </h5>
           <% end %>
+
+        <div class="user-tracks">
+          <h3><%= @you.name %>'s Tracks (<%= @your_tracks.length %> total)</h3>
+        </div>
+
+            <% @your_tracks.each do |track| %>
+              <h5>
+                <%= track %>
+              </h5>
+            <% end %>
       </div>
 
     </div>
