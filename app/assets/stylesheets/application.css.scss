@@ -1,4 +1,5 @@
 // Global
+@import url(https://fonts.googleapis.com/css?family=PT+Sans+Narrow);
 
 *, *:before, *:after {
   box-sizing: border-box;
@@ -54,15 +55,12 @@ h4 {
 }
 .pull-right {
   float: right !important;
+  margin: 20px;
 }
 
 // Welcome
 
-.welcome-header {
-  font-size: 85px;
-  text-align: center;
-  text-shadow: -1px 0 gray, 0 1px gray, 1px 0 gray, 0 -1px white;
-}
+
 
 
 .login-button {
@@ -78,9 +76,19 @@ h4 {
   right: 0;
   left: 0;
   bottom: 0;
-  background-image: url("oldcassette.jpg");
-  background-position: 49% 10%;
+  background-image: url(oldcassette.jpg);
+  background-image: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
+
+.welcome-header {
+  font-size: 7.3vh;
+  text-align: center;
+  color: #648F00;
+  text-shadow: -1px 0 black, 0 2px black, 2px 0 black, 0 -1px black;
+}
+
 
 .hello {
   top: 0;
@@ -89,47 +97,61 @@ h4 {
   bottom: 0;
   background-image: url("myrecordplayer.jpg");
   position: fixed;
-  z-index: -1;
-  opacity: 0.967;
+  background-image: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 
 // For User Show
-
+.matcher-header {
+  background: rgba(0, 0, 0, 0.63);
+  font-family: 'PT Sans Narrow', sans-serif;
+}
 .match-title {
-  font-family: 'Raleway', sans-serif;
+  font-family: 'PT Sans Narrow', sans-serif;
   text-align: center;
-  background: black;
   color: white;
-  padding: 0px;
+  padding-bottom: 5px;
   margin: 0px;
   &:hover {
   color: #949494;
   }
 }
 
+.comparison-page {
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-image: url("myrecordplayer.jpg");
+  position: fixed;
+  background-image: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
 .box-1 {
   font-family: 'Raleway', sans-serif;
-  background: #648F00;
   padding: 20px;
   overflow: auto;
-  border: 1px solid black;
+  .area-1{
+    border-radius: 5px;
+    background: rgba(104, 142, 0, 0.54);
+    padding: 10px;
+  }
 }
 
 .box-2 {
   font-family: 'Raleway', sans-serif;
-  background: #949494;
   padding: 20px;
-  border: 1px solid black;
-  border-left: none;
+  .area-2 {
+    border-radius: 5px;
+    background: rgba(151, 151, 151, 0.59);
+    padding: 10px;
+  }
 }
 
-.current-user-list {
-  background: #648F00;
-}
 
-.compared-user-list {
-  background: #949494;
-}
 
 a {
   color: #949494;
@@ -148,12 +170,44 @@ a {
   margin-left: 50px;
   margin-bottom: 50px;
   border-bottom :2px solid black;
+  font-family: 'Raleway', sans-serif;
 }
 
+.hello > h1 {
+  font-family: 'Raleway', sans-serif;
+}
+
+.welcome-title {
+  font-family: 'PT Sans Narrow', sans-serif;
+}
+
+.signout {
+  background: black;
+  color: white;
+  outline: 0;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  &:hover {
+    color: black;
+    background: white;
+  }
+}
+
+
 .welcome-compare {
+  font-family: 'Raleway', sans-serif;
   margin-top: 10px;
   margin-right: 10px;
   margin-left: 50px;
   margin-bottom: 50px;
-  border-bottom :2px solid black;
+  padding: 20px;
+  color: white;
+  border-radius: 5px;
+  background: rgba(0, 0, 0, 0.5);
+
+  a {
+    color: white;
+    font-family: 'Raleway', sans-serif;
+  }
 }

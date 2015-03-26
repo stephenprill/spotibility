@@ -1,22 +1,22 @@
 <div class="hello">
   <div class="pull-right">
-    <button>
+    <button class="signout">
       <%= link_to 'Signout', signout_path  %>
     </button>
   </div>
 
     <div class="welcome-user">
-      <h3>You</h3>
         <div>
-          <h2><%= current_user.spotify_id %></h2>
+          <h2 class="welcome-title">Spotify User: <%= current_user.spotify_id %></h2>
         </div>
     </div>
 
+
     <div class="welcome-compare">
-      <h3>Compare</h3>
+      <h1>Check your spotibliity against these users</h1>
         <% @users.each do |user| %>
           <div>
-            <h2><%= link_to user.name, user_path(user) %></h2>
+            <h2>+ <%= link_to user.name, user_path(user) %></h2>
           </div>
         <% end %>
     </div>
