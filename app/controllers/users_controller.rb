@@ -71,7 +71,7 @@ class UsersController < ApplicationController
     @artist_match_percentage = Comparison.new(@my_artists, @your_artists).match
     @track_match_percentage = Comparison.new(@my_tracks, @your_tracks).match
 
-    @match_percentage = [@track_match_percentage, @artist_match_percentage].sum / 2
+    @match_percentage = [@track_match_percentage, @artist_match_percentage].sum.round(2) / 2
   end
 
 
