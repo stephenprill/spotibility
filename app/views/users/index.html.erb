@@ -16,7 +16,7 @@
       <h1>Check your spotibliity against these users</h1>
         <% @users.each do |user| %>
           <div>
-            <h2>+ <%= link_to user.name, user_path(user) %></h2>
+            <h2><ul><li><%= link_to user.name, user_path(user) %></li></ul></h2>
           </div>
         <% end %>
     </div>
