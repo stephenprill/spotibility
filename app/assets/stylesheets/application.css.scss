@@ -19,6 +19,7 @@ h4 {
   margin: 0;
 }
 
+// Grid
 
 .columns:before,
 .columns:after {
@@ -50,7 +51,7 @@ h4 {
  width: 25%;
 }
 
-// Classes Temp
+// Positional
 
 .pull-left {
   float: left;
@@ -66,10 +67,6 @@ h4 {
   text-align: center;
 }
 
-.container{
-  background: red;
-}
-
 .welcome {
   position: fixed;
   top: 0;
@@ -80,7 +77,6 @@ h4 {
   background-image: no-repeat;
   background-position: center;
   background-size: cover;
-  
 }
 
 .welcome-header {
@@ -147,7 +143,6 @@ h4 {
 .box-2 {
   font-family: 'Raleway', sans-serif;
   padding: 20px;
-  overflow: auto;
   .area-2 {
     border-radius: 5px;
     background: rgba(151, 151, 151, 0.59);
