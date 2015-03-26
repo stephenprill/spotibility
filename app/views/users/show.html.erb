@@ -1,41 +1,56 @@
+<div class="comparison-page">
 
-<h4><%= link_to ' Home', root_path %>  |  <%= link_to ' Back', users_path %></h4>
-<h1 class="match-title">Match Percentage: <%= @match_percentage %> %</h1>
-<h1 class="match-title">Artist Match Percentage: <%= @artist_match_percentage %> %</h1>
-<h1 class="match-title">Track Match Percentage: <%= @track_match_percentage %> %</h1>
+  <div class="matcher-header">
+    <h4><%= link_to ' Home', root_path %>  |  <%= link_to ' Back', users_path %></h4>
+    <h1 class="match-title">Match Percentage: <%= @match_percentage %> %</h1>
+    <h1 class="match-title">Artist Match Percentage: <%= @artist_match_percentage %> %</h1>
+    <h1 class="match-title">Track Match Percentage: <%= @track_match_percentage %> %</h1>
+  </div>
 
 <section class="columns">
   <div class="column column-two box-1">
-    <div class="user-header">
-      <h1>
-        <%= @me.spotify_id %>
-      </h1>
-    </div>
 
-    <div class="current-user-list">
-    <h6>Your Unique Artists:   <%= @my_artists.length %> TOTAL</h6>
-        <% @my_artists.each do |artist| %>
-          <h3>
-            <%= artist %>
-          </h3>
-        <% end %>
+    <div class="area-1">
+      <div class="user-header">
+        <h1>
+          <%= @me.spotify_id %>
+        </h1>
       </div>
+
+      <div class="current-user-list">
+      <h6>Your Unique Artists:   <%= @my_artists.length %> TOTAL</h6>
+          <% @my_artists.each do |artist| %>
+            <h3>
+              <%= artist %>
+            </h3>
+          <% end %>
+      </div>
+    </div>
   </div>
+
 
   <div class="column column-two box-2">
-    <div class="user-header">
-      <h1>
-        <%= @you.name %>
-      </h1>
+
+    <div class="area-2">
+
+      <div class="user-header">
+        <h1>
+          <%= @you.name %>
+        </h1>
+      </div>
+
+      <div class="compared-user-list">
+        <h6>Their Unique Artists:   <%= @your_artists.length %> TOTAL</h6>
+          <% @your_artists.each do |artist| %>
+            <h3>
+              <%= artist %>
+            </h3>
+          <% end %>
+      </div>
+
     </div>
 
-    <div class="compared-user-list">
-      <h6>Their Unique Artists:   <%= @your_artists.length %> TOTAL</h6>
-        <% @your_artists.each do |artist| %>
-          <h3>
-            <%= artist %>
-          </h3>
-        <% end %>
-    </div>
   </div>
+
 </section>
+</div>
