@@ -1,9 +1,9 @@
 == SPOTIBILITY
 A Ruby on Rails app that allows users to compare their musical tastes via a calculated match percentage through the Spotify API. 
 
-Heroku URL: http://spotibility.herokuapp.com
+Heroku URL: https://spotibility.herokuapp.com/
 
-=== setup 
+=== Setup 
 
 Ensure that the playlist(s) you want to use for your compatibility score are made public on Spotify. 
 
