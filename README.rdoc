@@ -5,7 +5,7 @@ Heroku URL: https://spotibility.herokuapp.com/
 
 === Setup 
 
-Ensure that the playlist(s) you want to use for your compatibility score are made public on Spotify. 
+Ensure that the playlist(s) you want to use for your compatibility score are made public through your Spotify account. 
 
 
 
